@@ -4,10 +4,12 @@ const app = express()
 app.use(express.json());
 app.use(express.urlencoded({extended: false}))
 
-app.get('/', function(req, res){
-    res.json({msg: 'Rota princeipal'})
-})
+const conn = require('./db/conn')
+
+
+const routes = require('./db/conn')
+app.use('/', routes)
 
 app.listen(3000, function(){
-    console.log('servidor tá rodando')
+    console.log('Server UP port 3000')
 })
