@@ -6,7 +6,6 @@ app.use(express.urlencoded({extended: false}))
 
 const conn = require('./db/conn')
 
-
 const routes = require('./db/conn')
 app.use('/', routes)
 
