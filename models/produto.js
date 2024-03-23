@@ -4,10 +4,9 @@ const schema = mongoose.Schema({
     nome: String,
     preco: Number,
     tamanho: String,
-    tipo: String,
+    tipo: String
 })
 
-const produto = mongoose.model('produto', schema)
+const Produto = mongoose.model('Produto', schema)
 
-module.exports = produto
-
+module.exports = Produto
