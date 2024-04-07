@@ -1,34 +1,35 @@
 const mongoose = require('mongoose')
+const Schema = mongoose.Schema
 
 const schema = mongoose.Schema({
-    nome: { 
+    id: { 
+        type: Number,
+        required: true,
+        min: 0,
+    },
+    nome: {
         type: String,
         required: true,
         minlength: 2,
-        maxlength: 100,
+        maxlength: 45,
         trim: true,
     },
     preco: {
         type: Number,
         required: true,
-        min: [0, 'Mais facil'],
-        match: /^\d+(\d{1,2})?$/,
+        min: 0,
     },
     tamanho: {
         type: String,
-        enum: ['Pequeno', 'Médio', 'Grande'],
-        default: 'Médio'
+        required: true,
+        maxlength: 45,
+        trim: true,
     },
     tipo: {
-        type: String,
-        enum: ['Bebidas', 'Pizzas', 'Sucos'],
-        default: 'Médio'
-    },
-    ingredientes: [{
-        type: String,
-        enum: ['calabresa', 'queijo', 'massa'],
-        required: true
-    }]
+        type: Schema.Types.ObjectId,
+        ref: 'Tipo',
+        required: true,
+    }
 })
 
 const Produto = mongoose.model('Produto', schema)
